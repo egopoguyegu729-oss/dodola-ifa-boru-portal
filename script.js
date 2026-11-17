@@ -65,6 +65,22 @@ export async function handleAuth(event, type, email, password, fullName = '', ro
         }
     }
 }
+/**
+ * Approve a Pending User Account (Admin Only)
+ */
+export async function approveUser(userId) {
+    const { error } = await supabase
+        .from('profiles')
+        .update({ is_approved: true })
+        .eq('id', userId);
+
+    if (error) {
+        alert('Error approving user: ' + error.message);
+    } else {
+        alert('User approved successfully! They can now access the portal.');
+        location.reload();
+    }
+}
 
 
 /**
