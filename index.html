@@ -34,7 +34,6 @@
         }
     </script>
     <style>
-        /* Custom 3D Card Effects & Glassmorphism */
         .card-3d {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
@@ -56,7 +55,6 @@
             transform: translateY(2px);
             box-shadow: 0 2px 3px -1px rgba(5, 150, 105, 0.2);
         }
-        /* Ticker Animation */
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
@@ -94,7 +92,7 @@
     <main class="flex-grow flex items-center justify-center px-4 py-10 lg:py-16">
         <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- Left Column: Branding, Motto & 3D Visual Intro -->
+            <!-- Left Column: Branding & Intro -->
             <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                 <div class="inline-flex items-center space-x-3 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-navy-800/10">
                     <span class="h-3 w-3 bg-emerald-600 rounded-full animate-ping"></span>
@@ -144,21 +142,18 @@
                 </div>
             </div>
 
-            <!-- Right Column: 3D Authentication Box -->
+            <!-- Right Column: Authentication Box with School Logo -->
             <div class="lg:col-span-5 w-full max-w-md mx-auto">
                 <div class="card-3d rounded-2xl p-8 relative overflow-hidden">
-                    <!-- Top Badge -->
                     <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-bl-xl tracking-wider">
                         Secure Auth
                     </div>
 
-                    <!-- Header -->
+                    <!-- Header with School Logo -->
                     <div class="text-center mb-6">
-                        <div class="w-14 h-14 bg-navy-900 text-white rounded-2xl mx-auto flex items-center justify-center text-2xl shadow-lg mb-3">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
+                        <img src="logo.jpg" alt="Dodola Ifa Boru Logo" class="w-16 h-16 rounded-2xl mx-auto object-cover shadow-lg mb-3 border-2 border-amber-500/30">
                         <h2 class="text-2xl font-bold text-navy-900">Welcome Portal</h2>
-                        <p class="text-sm text-slate-500 mt-1">Sign in or register with your school credentials</p>
+                        <p class="text-sm text-slate-500 mt-1">Sign in or register with your Gmail or Outlook account</p>
                     </div>
 
                     <!-- Tab Switcher -->
@@ -172,14 +167,14 @@
                     </div>
 
                     <!-- LOGIN FORM -->
-                    <form id="form-login" class="space-y-4" onsubmit="handleAuth(event, 'login')">
+                    <form id="form-login" class="space-y-4" onsubmit="handleAuth(event, 'login', this.querySelector('input[type=email]').value, this.querySelector('input[type=password]').value)">
                         <div>
                             <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Email Address</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
                                     <i class="fa-regular fa-envelope"></i>
                                 </span>
-                                <input type="email" required placeholder="student@dodolaifaboru.edu.et" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-navy-800 focus:bg-white transition">
+                                <input type="email" required placeholder="yourname@gmail.com or outlook.com" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-navy-800 focus:bg-white transition">
                             </div>
                         </div>
 
@@ -196,14 +191,14 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl btn-3d flex items-center justify-center space-y-0 space-x-2 transition">
+                        <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl btn-3d flex items-center justify-center space-x-2 transition">
                             <span>Secure Sign In</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
                     </form>
 
-                    <!-- SIGN UP FORM (Hidden by default) -->
-                    <form id="form-signup" class="space-y-4 hidden" onsubmit="handleAuth(event, 'signup')">
+                    <!-- SIGN UP FORM -->
+                    <form id="form-signup" class="space-y-4 hidden" onsubmit="handleAuth(event, 'signup', this.querySelectorAll('input[type=email]')[0].value, this.querySelector('input[type=password]').value, this.querySelector('input[placeholder=\'Abebe Kebede\']').value, this.querySelector('select').value)">
                         <div>
                             <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Full Name</label>
                             <div class="relative">
@@ -215,12 +210,12 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">School Email</label>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Email (Gmail / Outlook)</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
                                     <i class="fa-regular fa-envelope"></i>
                                 </span>
-                                <input type="email" required placeholder="name@dodolaifaboru.edu.et" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-navy-800 focus:bg-white transition">
+                                <input type="email" required placeholder="name@gmail.com" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-navy-800 focus:bg-white transition">
                             </div>
                         </div>
 
@@ -271,7 +266,7 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT -->
+    <!-- INTERACTIVE JAVASCRIPT & MODULAR SCRIPT LINK -->
     <script>
         function switchTab(tab) {
             const loginBtn = document.getElementById('tab-login');
@@ -291,14 +286,7 @@
                 loginForm.classList.add('hidden');
             }
         }
-
-        function handleAuth(event, type) {
-            event.preventDefault();
-            // Placeholder interaction for Supabase integration
-            const actionText = type === 'login' ? 'Authenticating with Supabase...' : 'Creating your account...';
-            alert(actionText + '\n(Ready to link with your Supabase backend endpoints).');
-        }
     </script>
-  <script type="module" src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
