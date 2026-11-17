@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes & Communities | Dodola Ifa Boru Special Boarding School</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1E3A8A',
+                            900: '#0F172A',
+                        },
+                        emerald: {
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        gold: '#D97706',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-3d {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(30, 58, 138, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-3d:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -10px rgba(30, 58, 138, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 min-h-full flex flex-col lg:flex-row">
+
+    <!-- DESKTOP SIDEBAR NAVIGATION -->
+    <aside class="hidden lg:flex flex-col w-64 bg-navy-900 text-slate-300 border-r border-slate-800 sticky top-0 h-screen shrink-0">
+        <div class="p-6 border-b border-slate-800 flex items-center space-x-3">
+            <div class="w-10 h-10 bg-emerald-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <h3 class="text-white font-bold text-sm leading-tight">Dodola Ifa Boru</h3>
+                <p class="text-[10px] text-emerald-400 font-semibold tracking-wider uppercase">Special Boarding</p>
+            </div>
+        </div>
+
+        <nav class="flex-grow p-4 space-y-1.5 overflow-y-auto">
+            <a href="/dashboard" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-chart-pie w-5 text-slate-400"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="/classes" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-navy-800 text-white font-medium text-sm shadow">
+                <i class="fa-solid fa-users-rectangle w-5 text-emerald-400"></i>
+                <span>Classes</span>
+            </a>
+            <a href="/library" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-book-open w-5 text-slate-400"></i>
+                <span>Digital Library</span>
+            </a>
+            <a href="/messages" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-comments w-5 text-slate-400"></i>
+                <span>Messages</span>
+                <span class="ml-auto bg-emerald-600 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">3</span>
+            </a>
+            <a href="/events" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-calendar-days w-5 text-slate-400"></i>
+                <span>Events</span>
+            </a>
+            <a href="/clubs" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-puzzle-piece w-5 text-slate-400"></i>
+                <span>Clubs & Projects</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-800 bg-navy-900/50">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-full bg-emerald-600/20 text-emerald-400 font-bold flex items-center justify-center text-sm border border-emerald-500/30">
+                        AK
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-semibold text-white">Abebe Kebede</h4>
+                        <span class="text-[10px] bg-navy-800 text-amber-400 px-2 py-0.5 rounded font-medium">Student (Gr 11-A)</span>
+                    </div>
+                </div>
+                <a href="/" title="Log Out" class="text-slate-400 hover:text-red-400 transition p-2">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="lg:hidden bg-navy-900 text-white p-4 flex items-center justify-between sticky top-0 z-20 shadow-md">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center font-bold text-sm">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <h1 class="text-xs font-bold leading-tight">Dodola Ifa Boru</h1>
+                <p class="text-[9px] text-emerald-400 font-semibold tracking-wider">Class Communities</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-full bg-emerald-600/20 text-emerald-400 font-bold flex items-center justify-center text-xs border border-emerald-500/30">
+                AK
+            </div>
+            <a href="/" class="text-slate-300 hover:text-red-400 text-sm">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8 max-w-7xl mx-auto w-full space-y-6">
+        
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <div>
+                <div class="inline-flex items-center space-x-2 bg-navy-900/5 px-3 py-1 rounded-full text-xs font-semibold text-navy-800 mb-2">
+                    <i class="fa-solid fa-users-rectangle text-emerald-600"></i>
+                    <span>Academics & Collaboration Hub</span>
+                </div>
+                <h2 class="text-2xl font-extrabold text-navy-900">Class Communities</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Participate in class discussions, view instructor announcements, and track upcoming tasks.</p>
+            </div>
+            <!-- Class Selector Dropdown / Badge -->
+            <div class="flex items-center space-x-3 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                <span class="text-xs font-semibold text-slate-600">Active Section:</span>
+                <select class="bg-white border border-slate-300 text-xs font-bold text-navy-900 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-navy-800">
+                    <option value="11-natural">Grade 11 - Natural Sciences (Sec A)</option>
+                    <option value="11-social">Grade 11 - Social Sciences (Sec B)</option>
+                    <option value="12-natural">Grade 12 - Natural Sciences (Sec A)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Main Layout Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- LEFT COLUMN: Class Stream / Discussion Board (8 Cols) -->
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- Post Box for Discussions -->
+                <div class="card-3d rounded-2xl p-4 sm:p-6">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-navy-800 text-white font-bold flex items-center justify-center text-sm shadow">
+                            AK
+                        </div>
+                        <div class="w-full">
+                            <input type="text" placeholder="Share an academic question or update with Grade 11-A..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-navy-800 transition">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                        <div class="flex space-x-2 text-slate-500 text-xs">
+                            <button class="px-3 py-1.5 hover:bg-slate-100 rounded-lg transition flex items-center space-x-1"><i class="fa-solid fa-paperclip text-emerald-600"></i><span>Attach File</span></button>
+                            <button class="px-3 py-1.5 hover:bg-slate-100 rounded-lg transition flex items-center space-x-1"><i class="fa-solid fa-square-poll-vertical text-navy-800"></i><span>Poll</span></button>
+                        </div>
+                        <button onclick="postToStream()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl transition shadow">
+                            Post to Stream
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stream Feed List -->
+                <div class="space-y-4">
+                    
+                    <!-- Post 1: Teacher Announcement with Assignment -->
+                    <div class="card-3d rounded-2xl p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-xl bg-navy-800/10 text-navy-800 flex items-center justify-center font-bold text-sm">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">Mr. Tadesse <span class="text-[10px] bg-navy-800 text-white px-2 py-0.5 rounded ml-2 font-normal">Physics Instructor</span></h4>
+                                    <p class="text-[10px] text-slate-400">Posted 4 hours ago • Grade 11-A Physics</p>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-amber-100 text-gold font-bold px-2.5 py-1 rounded-full">Assignment Task</span>
+                        </div>
+                        
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">
+                            Dear students, please review Chapter 4 notes on Wave Optics and complete Exercises 3 through 7 on page 112. Solutions must be submitted in PDF format before Thursday evening.
+                        </p>
+
+                        <!-- Attached File Box -->
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-9 h-9 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-sm font-bold">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-800">Chapter_4_Wave_Optics_Guide.pdf</h5>
+                                    <span class="text-[10px] text-slate-400">2.4 MB • Uploaded by Instructor</span>
+                                </div>
+                            </div>
+                            <button class="px-3 py-1.5 bg-navy-800 hover:bg-navy-900 text-white text-xs font-medium rounded-lg transition">Download</button>
+                        </div>
+
+                        <!-- Interaction bar -->
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs text-slate-500">
+                            <div class="flex space-x-4">
+                                <button class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-regular fa-thumbs-up"></i><span>14 Likes</span></button>
+                                <button class="hover:text-navy-800 transition flex items-center space-x-1"><i class="fa-regular fa-comment"></i><span>5 Comments</span></button>
+                            </div>
+                            <span class="text-[11px] text-emerald-600 font-semibold">Due in 2 days</span>
+                        </div>
+                    </div>
+
+                    <!-- Post 2: Student Question -->
+                    <div class="card-3d rounded-2xl p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-600/10 text-emerald-600 flex items-center justify-center font-bold text-sm">
+                                    TK
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">Tigest Kassahun <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded ml-2 font-normal">Student</span></h4>
+                                    <p class="text-[10px] text-slate-400">Posted yesterday • Study Group Discussion</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">
+                            Hey everyone! Is anyone meeting at the library tonight at 7 PM to review organic chemistry reaction mechanisms for the upcoming quiz?
+                        </p>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs text-slate-500">
+                            <div class="flex space-x-4">
+                                <button class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-regular fa-thumbs-up"></i><span>8 Likes</span></button>
+                                <button class="hover:text-navy-800 transition flex items-center space-x-1"><i class="fa-regular fa-comment"></i><span>3 Replies</span></button>
+                            </div>
+                            <span class="text-[11px] text-slate-400">Chemistry Club Stream</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Assignment & Task Tracker (4 Cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <div class="card-3d rounded-2xl p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-base font-bold text-navy-900 flex items-center space-x-2">
+                            <i class="fa-solid fa-list-check text-emerald-600"></i>
+                            <span>Task Tracker</span>
+                        </h3>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">3 Active</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">Upcoming homework, laboratory reports, and quizzes.</p>
+
+                    <div class="space-y-3">
+                        <!-- Task 1 -->
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-xs font-bold text-slate-900">Physics Chapter 4 Exercises</h4>
+                                <span class="text-[10px] bg-amber-100 text-gold font-bold px-2 py-0.5 rounded">Due Thu</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mb-2">Mr. Tadesse • Wave Optics Problems</p>
+                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-amber-500 h-full w-3/4"></div>
+                            </div>
+                        </div>
+
+                        <!-- Task 2 -->
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-xs font-bold text-slate-900">Biology Lab Report: Osmosis</h4>
+                                <span class="text-[10px] bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded">Due Friday</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mb-2">Dr. Almaz • Cell Biology Unit</p>
+                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-red-500 h-full w-1/2"></div>
+                            </div>
+                        </div>
+
+                        <!-- Task 3 -->
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="text-xs font-bold text-slate-900">Advanced Calculus Problem Set 2</h4>
+                                <span class="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded">Due Next Mon</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mb-2">Mr. Bekele • Derivatives & Integrals</p>
+                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-600 h-full w-1/4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class Instructors Directory -->
+                <div class="card-3d rounded-2xl p-6">
+                    <h3 class="text-base font-bold text-navy-900 mb-4 flex items-center space-x-2">
+                        <i class="fa-solid fa-chalkboard-user text-gold"></i>
+                        <span>Grade 11 Instructors</span>
+                    </h3>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-navy-800/10 text-navy-800 font-bold flex items-center justify-center text-xs">
+                                    MT
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Mr. Tadesse</h4>
+                                    <p class="text-[10px] text-emerald-600 font-medium">Physics • Available</p>
+                                </div>
+                            </div>
+                            <a href="/messages" class="w-7 h-7 bg-navy-800 text-white rounded-lg flex items-center justify-center text-xs hover:bg-navy-900 transition"><i class="fa-solid fa-message"></i></a>
+                        </div>
+
+                        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-emerald-600/10 text-emerald-600 font-bold flex items-center justify-center text-xs">
+                                    DA
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Dr. Almaz</h4>
+                                    <p class="text-[10px] text-emerald-600 font-medium">Biology • Available</p>
+                                </div>
+                            </div>
+                            <a href="/messages" class="w-7 h-7 bg-navy-800 text-white rounded-lg flex items-center justify-center text-xs hover:bg-navy-900 transition"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-navy-900 border-t border-slate-800 flex justify-around items-center py-2 px-2 z-30 shadow-2xl">
+        <a href="/dashboard" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1">
+            <i class="fa-solid fa-chart-pie text-base"></i>
+            <span class="text-[10px] mt-1">Home</span>
+        </a>
+        <a href="/classes" class="flex flex-col items-center text-emerald-400 px-3 py-1">
+            <i class="fa-solid fa-users-rectangle text-base"></i>
+            <span class="text-[10px] mt-1 font-semibold">Classes</span>
+        </a>
+        <a href="/library" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span class="text-[10px] mt-1">Library</span>
+        </a>
+        <a href="/messages" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1 relative">
+            <i class="fa-solid fa-comments text-base"></i>
+            <span class="absolute top-1 right-2 w-2 h-2 bg-emerald-600 rounded-full"></span>
+            <span class="text-[10px] mt-1">Chats</span>
+        </a>
+        <a href="/events" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1">
+            <i class="fa-solid fa-calendar-days text-base"></i>
+            <span class="text-[10px] mt-1">Events</span>
+        </a>
+    </nav>
+
+    <!-- INTERACTIVE SCRIPT -->
+    <script>
+        function postToStream() {
+            alert("Posting message to class stream...\n(Will be saved to Supabase database class_stream table).");
+        }
+    </script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

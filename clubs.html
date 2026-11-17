@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Clubs & Projects | Dodola Ifa Boru Special Boarding School</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1E3A8A',
+                            900: '#0F172A',
+                        },
+                        emerald: {
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        gold: '#D97706',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-3d {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(30, 58, 138, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-3d:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -10px rgba(30, 58, 138, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 min-h-full flex flex-col lg:flex-row">
+
+    <!-- DESKTOP SIDEBAR NAVIGATION -->
+    <aside class="hidden lg:flex flex-col w-64 bg-navy-900 text-slate-300 border-r border-slate-800 sticky top-0 h-screen shrink-0">
+        <div class="p-6 border-b border-slate-800 flex items-center space-x-3">
+            <div class="w-10 h-10 bg-emerald-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <h3 class="text-white font-bold text-sm leading-tight">Dodola Ifa Boru</h3>
+                <p class="text-[10px] text-emerald-400 font-semibold tracking-wider uppercase">Special Boarding</p>
+            </div>
+        </div>
+
+        <nav class="flex-grow p-4 space-y-1.5 overflow-y-auto">
+            <a href="/dashboard" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-chart-pie w-5 text-slate-400"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="/classes" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-users-rectangle w-5 text-slate-400"></i>
+                <span>Classes</span>
+            </a>
+            <a href="/library" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-book-open w-5 text-slate-400"></i>
+                <span>Digital Library</span>
+            </a>
+            <a href="/messages" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-comments w-5 text-slate-400"></i>
+                <span>Messages</span>
+                <span class="ml-auto bg-emerald-600 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">3</span>
+            </a>
+            <a href="/events" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-navy-800/60 hover:text-white transition text-sm font-medium">
+                <i class="fa-solid fa-calendar-days w-5 text-slate-400"></i>
+                <span>Events</span>
+            </a>
+            <a href="/clubs" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-navy-800 text-white font-medium text-sm shadow">
+                <i class="fa-solid fa-puzzle-piece w-5 text-emerald-400"></i>
+                <span>Clubs & Projects</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-800 bg-navy-900/50">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-full bg-emerald-600/20 text-emerald-400 font-bold flex items-center justify-center text-sm border border-emerald-500/30">
+                        AK
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-semibold text-white">Abebe Kebede</h4>
+                        <span class="text-[10px] bg-navy-800 text-amber-400 px-2 py-0.5 rounded font-medium">Student (Gr 11-A)</span>
+                    </div>
+                </div>
+                <a href="/" title="Log Out" class="text-slate-400 hover:text-red-400 transition p-2">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="lg:hidden bg-navy-900 text-white p-4 flex items-center justify-between sticky top-0 z-20 shadow-md">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center font-bold text-sm">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <h1 class="text-xs font-bold leading-tight">Dodola Ifa Boru</h1>
+                <p class="text-[9px] text-emerald-400 font-semibold tracking-wider">Clubs & Projects</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-full bg-emerald-600/20 text-emerald-400 font-bold flex items-center justify-center text-xs border border-emerald-500/30">
+                AK
+            </div>
+            <a href="/" class="text-slate-300 hover:text-red-400 text-sm">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8 max-w-7xl mx-auto w-full space-y-6">
+        
+        <!-- Page Header -->
+        <div class="card-3d rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <div class="inline-flex items-center space-x-2 bg-emerald-600/10 px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 mb-2">
+                    <i class="fa-solid fa-puzzle-piece text-emerald-600"></i>
+                    <span>Extracurricular Communities</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900">Student Clubs & Project Hubs</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Collaborate with peers, work on innovative student projects, and join active school societies.</p>
+            </div>
+            <button onclick="proposeClub()" class="px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl transition shadow flex items-center space-x-2">
+                <i class="fa-solid fa-plus"></i>
+                <span>Propose New Club</span>
+            </button>
+        </div>
+
+        <!-- Clubs Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Club Card 1: Coding Club (Joined) -->
+            <div class="card-3d rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-navy-800 text-white flex items-center justify-center text-lg font-bold shadow">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Member</span>
+                    </div>
+                    <h3 class="text-base font-bold text-navy-900 mb-1">Coding & Web Developers Club</h3>
+                    <p class="text-xs text-slate-500 mb-4 leading-relaxed">Building software solutions, web apps, and exploring programming languages like JavaScript and Python.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 py-2 border-t border-slate-100 mb-4">
+                        <span><i class="fa-solid fa-users mr-1"></i> 34 Members</span>
+                        <span><i class="fa-solid fa-chalkboard-user mr-1"></i> Mr. Bekele</span>
+                    </div>
+                    <button onclick="openClubHub('Coding Club')" class="w-full py-2.5 bg-navy-800 hover:bg-navy-900 text-white text-xs font-semibold rounded-xl transition shadow text-center">Open Club Hub</button>
+                </div>
+            </div>
+
+            <!-- Club Card 2: Science Club -->
+            <div class="card-3d rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg font-bold shadow">
+                            <i class="fa-solid fa-atom"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-200 text-slate-700 font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Official</span>
+                    </div>
+                    <h3 class="text-base font-bold text-navy-900 mb-1">Science & Robotics Society</h3>
+                    <p class="text-xs text-slate-500 mb-4 leading-relaxed">Experimenting with physics mechanics, chemical reactions, and automated robotics prototypes.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 py-2 border-t border-slate-100 mb-4">
+                        <span><i class="fa-solid fa-users mr-1"></i> 48 Members</span>
+                        <span><i class="fa-solid fa-chalkboard-user mr-1"></i> Dr. Almaz</span>
+                    </div>
+                    <button onclick="joinClub('Science & Robotics Society')" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl transition shadow text-center">Join Club</button>
+                </div>
+            </div>
+
+            <!-- Club Card 3: Debating Society -->
+            <div class="card-3d rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg font-bold shadow">
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-200 text-slate-700 font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Official</span>
+                    </div>
+                    <h3 class="text-base font-bold text-navy-900 mb-1">Debating & Oratory Society</h3>
+                    <p class="text-xs text-slate-500 mb-4 leading-relaxed">Fostering critical thinking, public speaking skills, and hosting inter-class debating tournaments.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 py-2 border-t border-slate-100 mb-4">
+                        <span><i class="fa-solid fa-users mr-1"></i> 25 Members</span>
+                        <span><i class="fa-solid fa-chalkboard-user mr-1"></i> Ms. Helen</span>
+                    </div>
+                    <button onclick="joinClub('Debating & Oratory Society')" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl transition shadow text-center">Join Club</button>
+                </div>
+            </div>
+
+            <!-- Club Card 4: Green Environment Club -->
+            <div class="card-3d rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center text-lg font-bold shadow">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <span class="text-[10px] bg-slate-200 text-slate-700 font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Official</span>
+                    </div>
+                    <h3 class="text-base font-bold text-navy-900 mb-1">Green Environment Club</h3>
+                    <p class="text-xs text-slate-500 mb-4 leading-relaxed">Campus tree planting, sustainability initiatives, and environmental conservation projects around Dodola.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 py-2 border-t border-slate-100 mb-4">
+                        <span><i class="fa-solid fa-users mr-1"></i> 60 Members</span>
+                        <span><i class="fa-solid fa-chalkboard-user mr-1"></i> Mr. Demissie</span>
+                    </div>
+                    <button onclick="joinClub('Green Environment Club')" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl transition shadow text-center">Join Club</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-navy-900 border-t border-slate-800 flex justify-around items-center py-2 px-2 z-30 shadow-2xl">
+        <a href="/dashboard" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1">
+            <i class="fa-solid fa-chart-pie text-base"></i>
+            <span class="text-[10px] mt-1">Home</span>
+        </a>
+        <a href="/classes" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1">
+            <i class="fa-solid fa-users-rectangle text-base"></i>
+            <span class="text-[10px] mt-1">Classes</span>
+        </a>
+        <a href="/library" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span class="text-[10px] mt-1">Library</span>
+        </a>
+        <a href="/messages" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1 relative">
+            <i class="fa-solid fa-comments text-base"></i>
+            <span class="absolute top-1 right-2 w-2 h-2 bg-emerald-600 rounded-full"></span>
+            <span class="text-[10px] mt-1">Chats</span>
+        </a>
+        <a href="/events" class="flex flex-col items-center text-slate-400 hover:text-white px-3 py-1">
+            <i class="fa-solid fa-calendar-days text-base"></i>
+            <span class="text-[10px] mt-1">Events</span>
+        </a>
+    </nav>
+
+    <!-- INTERACTIVE SCRIPT -->
+    <script>
+        function openClubHub(clubName) {
+            alert("Opening hub for: " + clubName + "\n(Loading project boards and member channels).");
+        }
+        function joinClub(clubName) {
+            alert("Application sent to join: " + clubName + "\n(Saved to Supabase club_members table).");
+        }
+        function proposeClub() {
+            alert("Opening club proposal form...");
+        }
+    </script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
