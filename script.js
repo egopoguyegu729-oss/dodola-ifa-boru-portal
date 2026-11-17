@@ -10,6 +10,9 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 /**
  * Handle User Authentication (Login / Sign Up)
  */
+/**
+ * Handle User Authentication (Login / Sign Up with Admin Approval Check)
+ */
 export async function handleAuth(event, type, email, password, fullName = '', role = 'student') {
     event.preventDefault();
     
@@ -21,12 +24,27 @@ export async function handleAuth(event, type, email, password, fullName = '', ro
 
         if (error) {
             alert('Login Failed: ' + error.message);
-        } else {
-            alert('Login Successful! Redirecting to dashboard...');
-            window.location.href = '/dashboard';
+            return;
         }
+
+        // Check if user profile is approved by admin
+        const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('is_approved, role')
+            .eq('id', data.user.id)
+            .single();
+
+        if (profileError || !profile.is_approved) {
+            alert('Your account is pending administrator approval. Please wait for the school admin to approve your access.');
+            await supabase.auth.signOut(); // Log them out immediately
+            return;
+        }
+
+        alert('Login Successful! Redirecting to dashboard...');
+        window.location.href = 'dashboard.html';
+
     } else {
-        // Sign Up
+        // Sign Up (Account created with is_approved = false by default)
         const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
@@ -34,6 +52,7 @@ export async function handleAuth(event, type, email, password, fullName = '', ro
                 data: {
                     full_name: fullName,
                     role: role,
+                    is_approved: false // Requires your approval
                 }
             }
         });
@@ -41,10 +60,12 @@ export async function handleAuth(event, type, email, password, fullName = '', ro
         if (error) {
             alert('Sign Up Failed: ' + error.message);
         } else {
-            alert('Account created successfully! Please check your email for verification.');
+            alert('Account created successfully! Please wait for school administration approval before you can log in.');
+            location.reload();
         }
     }
 }
+
 
 /**
  * Fetch Public Announcements for Notice Ticker / Dashboard
